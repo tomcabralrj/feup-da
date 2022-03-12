@@ -16,6 +16,15 @@ std::vector<Activity> earliestFinishScheduling(std::vector<Activity> A) {
 
     std::vector<Activity> res;
 
+    std::sort(A.begin(), A.end());
+
+    res.push_back(A[0]);
+    for(int i=1; i<A.size(); i++){
+        if(A[i].start >= res.back().finish){
+            res.push_back(A[i]);
+        }
+    }
+
     return res;
 }
 
